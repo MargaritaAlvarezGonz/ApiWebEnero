@@ -14,8 +14,8 @@ namespace Logic.Logic
         public AdminLogic(ServiceContext serviceContext) : base(serviceContext) { }
         public void InsertAdminItem(AdminItem adminItem)
         {
-            _serviceContext.Admin.Add(adminItem);
-            _serviceContext.SaveChanges();
+            //_serviceContext.Admin.Add(adminItem);
+            //_serviceContext.SaveChanges();
         }
     }
 }

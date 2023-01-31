@@ -6,8 +6,7 @@ using Logic.ILogic;
 using Logic.Logic;
 using Microsoft.EntityFrameworkCore;
 
-try 
-{ 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -20,7 +19,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductLogic, ProductLogic>();
 builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddDbContext<ServiceContext>(
+//builder.Services.AddScoped<IOrderLogic, OrderLogic>();
+//builder.Services.AddScoped<IOrderService, OrderService>();
+
+//builder.Services.AddScoped<IAdminLogic, AdminLogic>();
+//builder.Services.AddScoped<IAdminService, AdminService>();
+
+   builder.Services.AddDbContext<ServiceContext>(
         options => options.UseSqlServer("name=ConnectionStrings:ServiceContext"));
 
 var app = builder.Build();
@@ -42,9 +47,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-}
 
-catch (Exception ex)
-{
-    Console.WriteLine("Upsi...");
-}
+

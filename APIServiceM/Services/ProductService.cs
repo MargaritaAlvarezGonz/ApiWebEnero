@@ -1,5 +1,6 @@
 ﻿using APIServiceM.IServices;
 using Entities.Entities;
+using Entities.SearchFilters;
 using Logic.ILogic;
 
 namespace APIServiceM.Services
@@ -12,14 +13,20 @@ namespace APIServiceM.Services
             _productLogic = productLogic;
         }
 
-        public void DeleteProduct(int id)
+              
+        public List<ProductItem> GetProduct() // esto lo agregue y va sin parámetro
         {
-            throw new NotImplementedException();
+            return _productLogic.GetProduct();
         }
 
-        public List<ProductItem> GetAllProducts()
+        public List<ProductItem> GetProductsByCriteria(ProductFilter productFilter)
         {
-            throw new NotImplementedException();
+            return _productLogic.GetProductsByCriteria(productFilter);
+        }
+
+        public void DeleteProductItem(int id)
+        {
+            _productLogic.DeleteProductItem(id);
         }
 
         public int InsertProduct(ProductItem productItem)

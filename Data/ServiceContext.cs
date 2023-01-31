@@ -17,7 +17,7 @@ namespace Data
         public DbSet<OrderItem> Orders { get; set; }
         public DbSet<UserItem> User { get; set; }
         public DbSet<AdminItem> Admin { get; set; }
-        public DbSet<BuyerItem> Buyer { get; set; }
+        public DbSet<BuyerItem> Buyers { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ProductItem>()
@@ -33,7 +33,7 @@ namespace Data
             .ToTable("Users");
 
             builder.Entity<AdminItem>()
-            .ToTable("Admin");
+            .ToTable("Admins");
 
             builder.Entity<BuyerItem>()
             .ToTable("Buyers");

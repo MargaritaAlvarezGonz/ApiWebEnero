@@ -14,6 +14,7 @@ namespace Entities.Entities
         }
         public int Id { get; set; }
         public Guid IdWeb { get; set; }
+        public int ProductId { get; set; }
         public DateTime InsertDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public bool IsActive { get; private set; }
@@ -21,11 +22,11 @@ namespace Entities.Entities
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Brand { get; set; }
+        public string BrandName { get; set; }
         public int Stock { get; set; }
         public decimal RawPrice { get; set; }
 
-        public int ProductId { get; set; }
+       
 
 
     }
