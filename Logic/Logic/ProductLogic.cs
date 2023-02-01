@@ -62,9 +62,11 @@ namespace Logic.Logic
             _serviceContext.SaveChanges();
         }
 
-        public void DelProductItem(ProductItem productitem)
+        public void UpdateProduct(ProductItem productItem)
         {
-            throw new NotImplementedException();
+            _serviceContext.Products.Update(productItem);
+
+            _serviceContext.SaveChanges();
         }
     }
 

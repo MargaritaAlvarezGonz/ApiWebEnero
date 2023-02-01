@@ -11,8 +11,6 @@ namespace Entities.SearchFilters
         public bool IsActive { get; set; }
         public DateTime InsertDateFrom { get; set; }
         public DateTime InsertDateTo { get; set; }
-        public decimal PriceFrom { get; set; }
-        public decimal PriceTo { get; set; }
-        public string? BrandName { get; set; }
+        
     }
 }

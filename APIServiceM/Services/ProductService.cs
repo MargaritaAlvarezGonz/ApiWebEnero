@@ -37,7 +37,7 @@ namespace APIServiceM.Services
 
         public void UpdateProduct(ProductItem productItem)
         {
-            throw new NotImplementedException();
+            _productLogic.UpdateProduct(productItem);
         }
     }
 }

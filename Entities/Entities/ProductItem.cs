@@ -22,7 +22,7 @@ namespace Entities.Entities
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string BrandName { get; set; }
+        public string Brand { get; set; }
         public int Stock { get; set; }
         public decimal RawPrice { get; set; }
 

@@ -29,13 +29,13 @@ namespace APIServiceM.Controllers
             return _productService.GetProduct();
         }
 
-        //[HttpGet(Name = "GetProductsByCriteria")]
-        //public List<ProductItem> GetByCriteria(bool isActive)
-        //{
-        //    var productFilter = new ProductFilter();
-        //    productFilter.IsActive = isActive;
-        //    return _productService.GetProductsByCriteria(productFilter);
-        //}
+        [HttpGet(Name = "GetProductsByCriteria")]
+        public List<ProductItem> GetByCriteria(bool isActive)
+        {
+            var productFilter = new ProductFilter();
+            productFilter.IsActive = isActive;
+            return _productService.GetProductsByCriteria(productFilter);
+        }
 
         [HttpDelete(Name = "DeleteProduct")]
 
@@ -43,6 +43,12 @@ namespace APIServiceM.Controllers
             {
             _productService.DeleteProductItem(id);
          }
+
+        [HttpPatch(Name = "ModifyProduct")]
+        public void Patch([FromBody] ProductItem productItem)
+        {
+            _productService.UpdateProduct(productItem);
+        }
     }
 }
 

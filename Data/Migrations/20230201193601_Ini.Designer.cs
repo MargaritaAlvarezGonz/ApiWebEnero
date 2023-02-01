@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(ServiceContext))]
-    [Migration("20230126130052_Initial")]
-    partial class Initial
+    [Migration("20230201193601_Ini")]
+    partial class Ini
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -177,7 +177,7 @@ namespace Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Admin");
+                    b.ToTable("Admins", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Entities.BuyerItem", b =>
@@ -209,6 +209,15 @@ namespace Data.Migrations
                     b.HasOne("Entities.Entities.ProductItem", null)
                         .WithMany()
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Entities.AdminItem", b =>
+                {
+                    b.HasOne("Entities.Entities.UserItem", null)
+                        .WithOne()
+                        .HasForeignKey("Entities.Entities.AdminItem", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

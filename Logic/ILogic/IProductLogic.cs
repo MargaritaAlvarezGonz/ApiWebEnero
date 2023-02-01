@@ -17,7 +17,8 @@ namespace Logic.ILogic
         List<ProductItem> GetProductsByCriteria(ProductFilter productFilter);
         List<ProductItem> GetProduct();
 
-        void DelProductItem(ProductItem productitem);
         void DeleteProductItem(int id);
+
+        void UpdateProduct(ProductItem productItem);
     }
 }
