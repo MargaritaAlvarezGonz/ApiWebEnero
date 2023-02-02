@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Logic.ILogic
 {
-    public interface IAdminLogic
+    public interface IPersonLogic
     {
-        void InsertAdminItem(AdminItem adminItem);
+        int InsertPerson(PersonItem personItem);
+        void UpdatePerson(PersonItem personItem);
+
+        void DeletePerson(int id);
     }
 }

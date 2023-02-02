@@ -14,7 +14,7 @@ namespace APIServiceM.Services
         }
 
               
-        public List<ProductItem> GetProduct() // esto lo agregue y va sin parámetro
+        public List<ProductItem> GetProduct() 
         {
             return _productLogic.GetProduct();
         }

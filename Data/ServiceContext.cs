@@ -15,9 +15,11 @@ namespace Data
         public ServiceContext(DbContextOptions<ServiceContext> options) : base(options) { }
         public DbSet<ProductItem> Products { get; set; }
         public DbSet<OrderItem> Orders { get; set; }
-        public DbSet<UserItem> User { get; set; }
-        public DbSet<AdminItem> Admin { get; set; }
+        public DbSet<PersonItem> Persons { get; set; }
+        public DbSet<UserItem> Users { get; set; }
         public DbSet<BuyerItem> Buyers { get; set; }
+        public DbSet<UserRollItem> UserRols { get; set; }
+        public DbSet<RolItem> RolItems { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ProductItem>()
@@ -29,15 +31,33 @@ namespace Data
             .WithMany()
             .HasForeignKey(o => o.ProductId);
 
-            builder.Entity<UserItem>()
-            .ToTable("Users");
+            builder.Entity<PersonItem>()
+            .ToTable("Persons");
 
-            builder.Entity<AdminItem>()
-            .ToTable("Admins");
 
-            builder.Entity<BuyerItem>()
-            .ToTable("Buyers");
-        }
+            builder.Entity<UserItem>(user =>
+            {
+                user.ToTable("Users");
+                user.HasOne<PersonItem>().WithMany().HasForeignKey(u => u.IdPerson);
+                user.HasOne<UserRollItem>().WithMany().HasForeignKey(u => u.IdRol);
+            });
+
+
+            builder.Entity<UserRollItem>()
+            .ToTable("UserRols");
+
+            builder.Entity<RolItem>()
+            .ToTable("Roles");
+
+            builder.Entity<BuyerItem>(buyer =>
+            {
+                buyer.ToTable("Buyers");
+                buyer.HasOne<PersonItem>().WithMany().HasForeignKey(b => b.IdPerson);
+                buyer.HasOne<UserRollItem>().WithMany().HasForeignKey(b => b.IdRol);
+            });
+            
+
+        }   
     }
 
     public class ServiceContextFactory : IDesignTimeDbContextFactory<ServiceContext>
