@@ -24,8 +24,10 @@ namespace Logic.Logic
         public List<ProductItem> GetProduct()
         {
             //return _serviceContext.Set<ProductItem>();ToList();
-            var resultList = new List<ProductItem>();
-            return resultList;
+            //var resultList = new List<ProductItem>();
+            //return resultList;
+            var allProducts = _serviceContext.Set<ProductItem>().ToList();
+            return allProducts;
         }
 
 
@@ -43,8 +45,7 @@ namespace Logic.Logic
 
         public void DeleteProductItem(int id)
         {
-            var productToDelete = _serviceContext.Set<ProductItem>()
-                .Where(x => x.Id == id);
+            _serviceContext.Products.Remove(_serviceContext.Set<ProductItem>().Where(p => p.id == id).FirstOrDefault());
             _serviceContext.SaveChanges();
         }
 

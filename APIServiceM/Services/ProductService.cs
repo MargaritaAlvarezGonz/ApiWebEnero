@@ -32,7 +32,7 @@ namespace APIServiceM.Services
         public int InsertProduct(ProductItem productItem)
         {
             _productLogic.InsertProductItem(productItem);
-            return productItem.Id;
+            return productItem.id;
         }
 
         public void UpdateProduct(ProductItem productItem)

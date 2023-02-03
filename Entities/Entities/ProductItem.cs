@@ -12,7 +12,7 @@ namespace Entities.Entities
             IsActive = true;
             IsPublic = true;
         }
-        public int Id { get; set; }
+        public int id { get; set; }
         public Guid IdWeb { get; set; }
         public int ProductId { get; set; }
         public DateTime InsertDate { get; set; }
