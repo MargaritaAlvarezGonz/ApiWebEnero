@@ -48,7 +48,10 @@ namespace APIServiceM.Controllers
         }
 
         [HttpPatch(Name = "ModifyUser")]
-        public void Patch([FromHeader] string userName, [FromHeader] string userPassword, [FromBody] UserItem userItem)
+        public void Patch([FromQuery] string userName,
+                         [FromQuery] string userPassword,
+                         [FromBody] UserItem userItem)
+
         {
             var validCredentials = _securityService.ValidateUserCredentials(userName, userPassword, 1);
             if (validCredentials == true)
@@ -60,7 +63,6 @@ namespace APIServiceM.Controllers
                 throw new InvalidCredentialException();
             }
         }
-
         [HttpDelete(Name = "DeleteUser")]
         public void Delete([FromHeader] string userName, [FromHeader] string userPassword, [FromQuery] int id)
         {
